@@ -16,4 +16,4 @@ print(&quot;Hello from Python!&quot;)
 ```
 </pre>
 
-![visualization] (D:\Git_Repositories\Optimizers\output4.gif)
+![visualization](output5.gif)

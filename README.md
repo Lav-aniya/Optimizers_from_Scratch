@@ -16,4 +16,4 @@ print(&quot;Hello from Python!&quot;)
 ```
 </pre>
 
-![visualization](output5.gif)
+![visualization](images/output5.gif)

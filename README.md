@@ -67,7 +67,7 @@ $$w_{t+1} = w_{t} - \eta \frac{\hat{m_{t}}}{\sqrt{\hat{v_{t}} + \epsilon}}$$
 * **$\eta$** is the learning rate.
 * **$\epsilon$** is a small number to prevent division by zero (e.g., `1e-8`).
 
-![visualization](images/NarrowValley_new.gif)
-![visualization](images/PeaksandValley_new.gif)
-![visualization](images/SaddlePoint_new.gif)
-![visualization](images/SmoothValley_new.gif)
+![visualization](images/NarrowValley.gif)
+![visualization](images/PeaksandValley.gif)
+![visualization](images/SaddlePoint.gif)
+![visualization](images/SmoothValley.gif)

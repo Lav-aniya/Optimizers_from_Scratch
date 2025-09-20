@@ -1,6 +1,5 @@
 
-<details>
-<summary><strong>Click to view the optimization animations</strong></summary>
+
 
 | **Smooth Valley** | **Narrow Valley** |
 | :---: | :---: |
@@ -8,7 +7,9 @@
 | **Saddle Point** | **Peaks and Valleys** |
 |![Animation of a saddle point optimization path](images/SaddlePoint.gif) | ![Animation of a Peaks and Valleys optimization path](images/PeaksandValleys.gif) |
 
-</details>
+
+<details>
+<summary><strong>SGD</strong></summary>
 
 # SGD
 $$ w_{t+1} = w_{t} - \eta \nabla L(w_{t}) $$
@@ -16,7 +17,11 @@ $$ w_{t+1} = w_{t} - \eta \nabla L(w_{t}) $$
 * $w_{t}$ is the current weight at time step $t$
 * $\eta (eta)$ is the learning rate, which controls the step size
 * $\nabla L(w_{t})$ is the gradient of the loss function calculated with respect to just a single training example
-     
+</details>
+
+<details>
+<summary><strong>Adagrad</strong></summary>
+
 # Adagrad
 A cache, often called **$s_{t}$** or cache, is initialized to zeros for each parameter in the model.
 In each training step, as the gradients are calculated, Adagrad squares each gradient element-wise and adds it to the corresponding entry in the cache.
@@ -34,8 +39,11 @@ $$ w_{t+1} = w_{t} - \frac{\eta}{\sqrt{s_{t}+\epsilon}} g_{t} $$
 * $\eta (eta)$ is the learning rate, a hyperparameter that controls the step size
 * $g_{t}$ is the current gradient of the loss function with respect to the weights
 * $\epsilon (epsilon)$ is a small number to prevent division by zero
+</details>
 
-    
+<details>
+<summary><strong>RMSprop</strong></summary>
+
 # RMSprop
 $$ s_{t} = \beta s_{t-1} + (1 - \beta)g_{t}^2 $$
 * $s_{t}$ is the new moving average of squared gradients
@@ -49,6 +57,10 @@ $$ w_{t + 1} = w_{t} - \frac{\eta}{\sqrt{s_{t}} + \epsilon} g_{t} $$
 * $w_{t}$ is the current weight
 * $\eta (eta)$ is the learning rate
 * $\epsilon (epsilon)$ is a small number to prevent division by zero
+</details>
+
+<details>
+<summary><strong>Adam</strong></summary>
 
 # Adam
 **first Moment(Momentum) and Second Moment(RMSprop):** 
@@ -76,7 +88,7 @@ $$w_{t+1} = w_{t} - \eta \frac{\hat{m_{t}}}{\sqrt{\hat{v_{t}} + \epsilon}}$$
 * **$w_{t}$** is the current weight.
 * **$\eta$** is the learning rate.
 * **$\epsilon$** is a small number to prevent division by zero (e.g., `1e-8`).
-
+</details>
 
 ---
 

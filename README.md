@@ -1,12 +1,12 @@
 
 <details>
 <summary><strong>Click to view the optimization animations</strong></summary>
+
 | **Smooth Valley** | **Narrow Valley** |
 | :---: | :---: |
-| ![Animation of a **Smooth valley** optimization path](images/SmoothValley.gif) | ![Animation of a **Narrow valley** optimization path](images/NarrowValley.gif) |
+| ![Animation of a Smooth valley optimization path](images/SmoothValley.gif) | ![Animation of a Narrow valley optimization path](images/NarrowValley.gif) |
 | **Saddle Point** | **Peaks and Valleys** |
-|![Animation of a **saddle point** optimization path](images/SaddlePoint.gif) | ![Animation of a **Peaks and Valleys** optimization path](images/PeaksandValleys.gif) |
-
+|![Animation of a saddle point optimization path](images/SaddlePoint.gif) | ![Animation of a Peaks and Valleys optimization path](images/PeaksandValleys.gif) |
 
 </details>
 

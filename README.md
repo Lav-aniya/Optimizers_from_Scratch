@@ -1,4 +1,8 @@
-## Optimizers_from_Scratch
+
+![visualization](images/NarrowValley.gif)
+![visualization](images/PeaksandValleys.gif)
+![visualization](images/SaddlePoint.gif)
+![visualization](images/SmoothValley.gif)
 
 # SGD
 $$ w_{t+1} = w_{t} - \eta \nabla L(w_{t}) $$
@@ -67,7 +71,62 @@ $$w_{t+1} = w_{t} - \eta \frac{\hat{m_{t}}}{\sqrt{\hat{v_{t}} + \epsilon}}$$
 * **$\eta$** is the learning rate.
 * **$\epsilon$** is a small number to prevent division by zero (e.g., `1e-8`).
 
-![visualization](images/NarrowValley.gif)
-![visualization](images/PeaksandValley.gif)
-![visualization](images/SaddlePoint.gif)
-![visualization](images/SmoothValley.gif)
+
+---
+
+# Save .mp4 to .gif
+
+Copy this script in text file and save it as `.bat` file, and run it. 
+
+```markdown
+```bash
+@echo off
+setlocal enabledelayedexpansion
+
+:: Set the directory where your MP4 files are located.
+SET "VIDEO_DIR=path"
+
+:: Set the directory where you want to save the GIFs.
+SET "OUTPUT_DIR=path"
+
+:: SCRIPT START
+echo Starting GIF conversion process...
+
+:: Create the output directory if it doesn't exist.
+if not exist "%OUTPUT_DIR%" (
+    echo Creating output directory: %OUTPUT_DIR%
+    mkdir "%OUTPUT_DIR%"
+)
+
+:: Loop through a list of the base filenames.
+FOR %%N IN (
+    Smooth_Valley
+    Narrow_Valley
+    Peaks_and_Valleys
+    Saddle_Point
+) DO (
+    echo.
+    echo --- Processing: %%N ---
+
+    SET "INPUT_VIDEO=%VIDEO_DIR%\animation_%%N.mp4"
+    SET "OutputName=%%N"
+    SET "OutputName=!OutputName:_=!"
+    SET "OUTPUT_GIF=%OUTPUT_DIR%\!OutputName!.gif"
+
+    SET "PALETTE_FILE=%TEMP%\palette_%%N.png"
+
+    echo [Step 1] Generating palette...
+  
+    ffmpeg -i "!INPUT_VIDEO!" -vf "fps=30,scale=800:-1:flags=lanczos,palettegen" -y "!PALETTE_FILE!" && (
+        echo [Step 2] Creating GIF using the new palette...
+        ffmpeg -i "!INPUT_VIDEO!" -i "!PALETTE_FILE!" -lavfi "fps=30,scale=800:-1:flags=lanczos[x];[x][1:v]paletteuse" -y "!OUTPUT_GIF!"
+    )
+
+    echo Finished %%N!
+)
+
+echo.
+echo All conversions are complete!
+pause
+```
+

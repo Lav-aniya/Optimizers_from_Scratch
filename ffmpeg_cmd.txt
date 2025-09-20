@@ -1,0 +1,55 @@
+@echo off
+setlocal enabledelayedexpansion
+
+:: --- CONFIGURATION ---
+:: Set the directory where your MP4 files are located.
+SET "VIDEO_DIR=D:\Git_Repositories\Optimizers"
+
+:: Set the directory where you want to save the GIFs.
+SET "OUTPUT_DIR=D:\Git_Repositories\Optimizers\images"
+
+:: --- SCRIPT START ---
+echo Starting GIF conversion process...
+
+:: Create the output directory if it doesn't exist.
+if not exist "%OUTPUT_DIR%" (
+    echo Creating output directory: %OUTPUT_DIR%
+    mkdir "%OUTPUT_DIR%"
+)
+
+:: Loop through a list of the base filenames.
+FOR %%N IN (
+    Smooth_Valley
+    Narrow_Valley
+    Peaks_and_Valleys
+    Saddle_Point
+) DO (
+    echo.
+    echo --- Processing: %%N ---
+
+    :: Define the full path for the input video.
+    SET "INPUT_VIDEO=%VIDEO_DIR%\animation_%%N.mp4"
+
+    :: Define the output GIF name by removing underscores from the base name.
+    SET "OutputName=%%N"
+    SET "OutputName=!OutputName:_=!"
+    SET "OUTPUT_GIF=%OUTPUT_DIR%\!OutputName!.gif"
+
+    :: Define the temporary palette file path.
+    SET "PALETTE_FILE=%TEMP%\palette_%%N.png"
+
+    echo [Step 1] Generating palette...
+    :: Step 1: Generate a high-quality palette for the specific video.
+    :: The "&&" ensures Step 2 only runs if Step 1 is successful.
+    ffmpeg -i "!INPUT_VIDEO!" -vf "fps=30,scale=800:-1:flags=lanczos,palettegen" -y "!PALETTE_FILE!" && (
+        echo [Step 2] Creating GIF using the new palette...
+        :: Step 2: Use that specific palette to create the final GIF.
+        ffmpeg -i "!INPUT_VIDEO!" -i "!PALETTE_FILE!" -lavfi "fps=30,scale=800:-1:flags=lanczos[x];[x][1:v]paletteuse" -y "!OUTPUT_GIF!"
+    )
+
+    echo --- Finished %%N! ---
+)
+
+echo.
+echo ✨ All conversions are complete!
+pause

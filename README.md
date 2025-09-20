@@ -12,7 +12,8 @@
 <summary><strong>SGD</strong></summary>
 
 # SGD
-$$ w_{t+1} = w_{t} - \eta \nabla L(w_{t}) $$
+
+$$w_{t+1} = w_{t} - \eta \nabla L(w_{t})$$
 * $w_{t+1}$ is the updated weight
 * $w_{t}$ is the current weight at time step $t$
 * $\eta (eta)$ is the learning rate, which controls the step size
@@ -23,17 +24,18 @@ $$ w_{t+1} = w_{t} - \eta \nabla L(w_{t}) $$
 <summary><strong>Adagrad</strong></summary>
 
 # Adagrad
+
 A cache, often called **$s_{t}$** or cache, is initialized to zeros for each parameter in the model.
 In each training step, as the gradients are calculated, Adagrad squares each gradient element-wise and adds it to the corresponding entry in the cache.
 
-$$ s_{t} = s_{t-1} + g_{t}^{2} $$
+$$s_{t} = s_{t-1} + g_{t}^{2}$$
 * $s_{t}$ is the running cache at time step $t$
 * $s_{t-1}$ is the cache from the previous time step
 * $g_{t}$ is the current gradient
 
 **Parameter Update:**
 
-$$ w_{t+1} = w_{t} - \frac{\eta}{\sqrt{s_{t}+\epsilon}} g_{t} $$
+$$w_{t+1} = w_{t} - \frac{\eta}{\sqrt{s_{t}+\epsilon}} g_{t}$$
 * $w_{t+1}$ is the updated weight at the next time step ($t + 1$)
 * $w_{t}$ is the current weight at time step $t$
 * $\eta (eta)$ is the learning rate, a hyperparameter that controls the step size
@@ -45,14 +47,15 @@ $$ w_{t+1} = w_{t} - \frac{\eta}{\sqrt{s_{t}+\epsilon}} g_{t} $$
 <summary><strong>RMSprop</strong></summary>
 
 # RMSprop
-$$ s_{t} = \beta s_{t-1} + (1 - \beta)g_{t}^2 $$
+
+$$s_{t} = \beta s_{t-1} + (1 - \beta)g_{t}^2$$
 * $s_{t}$ is the new moving average of squared gradients
 * $\beta (beta)$ is a decay rate hyperparameter (typically around 0.9) that controls how much of the old average to keep
 * $g_{t}$ is the current gradient
 
 **Parameter Update:**  
 
-$$ w_{t + 1} = w_{t} - \frac{\eta}{\sqrt{s_{t}} + \epsilon} g_{t} $$ 
+$$w_{t + 1} = w_{t} - \frac{\eta}{\sqrt{s_{t}} + \epsilon} g_{t}$$ 
 * $w_{t+1}$ is the updated weight
 * $w_{t}$ is the current weight
 * $\eta (eta)$ is the learning rate
@@ -65,6 +68,9 @@ $$ w_{t + 1} = w_{t} - \frac{\eta}{\sqrt{s_{t}} + \epsilon} g_{t} $$
 # Adam
 **first Moment(Momentum) and Second Moment(RMSprop):** 
 $$m_{t} = \\beta_{1} m_{t-1} + (1 - \\beta_{1})g_{t}$$
+
+and
+
 $$v_{t} = \\beta_{2} v_{t-1} + (1 - \\beta_{2})g_{t}^{2}$$
 
 * **$m_{t}, v_{t}$** are the moving averages for the first and second moment, respectively.

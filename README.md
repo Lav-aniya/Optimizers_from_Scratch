@@ -1,8 +1,14 @@
 
-![visualization](images/NarrowValley.gif)
-![visualization](images/PeaksandValleys.gif)
-![visualization](images/SaddlePoint.gif)
-![visualization](images/SmoothValley.gif)
+<details>
+<summary><strong>Click to view the optimization animations</strong></summary>
+| **Smooth Valley** | **Narrow Valley** |
+| :---: | :---: |
+| ![Animation of a **Smooth valley** optimization path](images/SmoothValley.gif) | ![Animation of a **Narrow valley** optimization path](images/NarrowValley.gif) |
+| **Saddle Point** | **Peaks and Valleys** |
+|![Animation of a **saddle point** optimization path](images/SaddlePoint.gif) | ![Animation of a **Peaks and Valleys** optimization path](images/PeaksandValleys.gif) |
+
+
+</details>
 
 # SGD
 $$ w_{t+1} = w_{t} - \eta \nabla L(w_{t}) $$
